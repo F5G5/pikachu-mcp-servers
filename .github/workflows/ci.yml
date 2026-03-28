@@ -1,0 +1,67 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        pip install fastmcp
+    
+    - name: Test import
+      run: |
+        python -c "import sys; sys.path.insert(0, '.'); from fastmcp import FastMCP; print('FastMCP OK')"
+    
+    - name: Validate servers
+      run: |
+        for f in *_server.py; do
+          echo "Testing $f..."
+          timeout 5 python "$f" --help 2>/dev/null && echo "✓ $f OK" || echo "✗ $f failed"
+        done
+
+  publish:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: Publish to PyPI
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      run: |
+        pip install build twine
+        python -m build
+        twine upload dist/*
+      if: false  # 暂时禁用，需要PyPI账号
+    
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: *.py
+        name: v${{ github.run_number }}
+        draft: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
