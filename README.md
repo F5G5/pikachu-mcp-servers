@@ -1,60 +1,103 @@
 # ⚡ Pikachu MCP Servers
 
-> 皮卡丘的MCP服务器集合 - 让AI连接真实世界！⚡
+> 让AI连接真实世界 - 开源MCP工具集合！⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastMCP](https://img.shields.io/badge/FastMCP-3.1.1-green.svg)](https://gofastmcp.com/)
+[![Stars](https://img.shields.io/github/stars/F5G5/pikachu-mcp-servers?style=social)](https://github.com/F5G5/pikachu-mcp-servers)
 
-## 🎯 简介
+> 🎯 8个MCP服务器 | 40+工具 | 完全免费开源
 
-这是一个开源的MCP (Model Context Protocol) 服务器集合，提供实用工具服务。快速让AI助手获得连接外部世界的能力！
+---
 
-**特点：**
-- 🔌 真实API集成（天气、新闻、搜索）
-- 🛠️ 开箱即用，无需API Key
-- 📝 代码简洁，易于学习和二次开发
-- 🚀 支持OpenClaw、Claude Desktop等MCP客户端
+## 🚀 快速开始
 
-## 📦 服务器列表
+```bash
+# 克隆仓库
+git clone https://github.com/F5G5/pikachu-mcp-servers.git
+cd pikachu-mcp-servers
 
-### 🌤️ pikachu-weather (天气服务器) 
-连接真实天气API
+# 安装依赖
+pip install fastmcp
 
-| 工具 | 功能 | 数据来源 |
+# 配置到OpenClaw
+# 在 openclaw.json 的 mcp.servers 中添加配置
+
+# 重启OpenClaw
+openclaw gateway restart
+```
+
+---
+
+## 📦 服务器列表 (8个)
+
+### 🌤️ pikachu-weather | 天气服务
+
+| 工具 | 功能 | 数据源 |
 |:---|:---|:---|
 | `get_current_weather(city)` | 实时天气 | wttr.in |
 | `get_weather_forecast(city, days)` | 天气预报 | wttr.in |
-| `get_air_quality(city)` | 空气质量 | 内置数据 |
-| `calculate(a, b, operation)` | 计算器 | 代码实现 |
-| `currency_converter(amount, from, to)` | 货币换算 | open.er-api.com |
-| `get_news(keyword)` | 最新新闻 | 模拟数据 |
-| `world_time(city)` | 世界时间 | 系统时区 |
+| `get_air_quality(city)` | 空气质量 | 内置 |
+| `calculate(a, b, op)` | 计算器 | - |
+| `currency_converter(amount, from, to)` | 货币换算 | open.er-api |
+| `world_time(city)` | 世界时间 | 系统 |
 
-### 📰 pikachu-news (新闻服务器)
-实时获取全网热点新闻
+### 📰 pikachu-news | 新闻服务
 
-| 工具 | 功能 | 数据来源 |
+| 工具 | 功能 | 数据源 |
 |:---|:---|:---|
-| `get_tech_news()` | 科技新闻 | Hacker News API |
+| `get_tech_news()` | 科技新闻 | Hacker News |
 | `get_zhihu_hot()` | 知乎热榜 | 知乎API |
-| `get_douyin_hot()` | 抖音热榜 | 模拟数据 |
+| `get_douyin_hot()` | 抖音热榜 | 内置 |
 | `get_weibo_hot()` | 微博热榜 | 微博API |
 | `search_news(keyword, limit)` | 新闻搜索 | DuckDuckGo |
 
-### 🔍 pikachu-search (搜索服务器)
-多功能搜索与查询
+### 🔍 pikachu-search | 搜索服务
 
-| 工具 | 功能 | 数据来源 |
+| 工具 | 功能 | 数据源 |
 |:---|:---|:---|
-| `web_search(query, num_results)` | 网页搜索 | DuckDuckGo |
+| `web_search(query, num)` | 网页搜索 | DuckDuckGo |
 | `wikipedia_lookup(keyword)` | 维基百科 | Wikipedia API |
-| `github_search(keyword)` | GitHub仓库 | 模拟数据 |
-| `unit_converter(value, from, to)` | 单位换算 | 内置算法 |
-| `quick_math(expression)` | 数学计算 | Python eval |
+| `github_search(keyword)` | GitHub仓库 | 内置 |
+| `unit_converter(v, from, to)` | 单位换算 | 内置 |
+| `quick_math(expression)` | 数学计算 | Python |
 
-### 🧮 pikachu-first (基础服务器)
-基础工具集合
+### 📱 pikachu-social | 社交媒体
+
+| 工具 | 功能 |
+|:---|:---|
+| `generate_social_content(platform, topic, tone)` | 多平台内容生成 |
+| `hashtag_generator(keywords, count)` | 热门标签 |
+| `thread_generator(topic, style, sections)` | Thread长文 |
+| `emoji_fy(text)` | Emoji美化 |
+
+### ⏰ pikachu-productivity | 效率工具
+
+| 工具 | 功能 |
+|:---|:---|
+| `pomodoro_timer(minutes)` | 番茄钟 |
+| `task_planner(tasks, hours)` | 智能任务规划 |
+| `daily_review()` | 每日复盘模板 |
+| `weekly_planner()` | 周计划生成器 |
+| `focus_session(work, break)` | 深度工作时段 |
+| `quick_break(type)` | 快速休息建议 |
+
+### 💻 pikachu-devtools | 开发工具
+
+| 工具 | 功能 |
+|:---|:---|
+| `json_formatter(json)` | JSON格式化 |
+| `json_minifier(json)` | JSON压缩 |
+| `url_encoder(text)` | URL编码/解码 |
+| `base64_tool(text, op)` | Base64编码/解码 |
+| `hash_generator(text, algo)` | Hash生成 |
+| `regex_tester(pattern, string)` | 正则测试 |
+| `color_converter(color)` | 颜色转换 |
+| `timestamp_converter(ts, type)` | 时间戳转换 |
+| `http_status_check(code)` | HTTP状态码 |
+
+### 🧮 pikachu-first | 基础工具
 
 | 工具 | 功能 |
 |:---|:---|
@@ -62,147 +105,101 @@
 | `subtract(a, b)` | 减法 |
 | `multiply(a, b)` | 乘法 |
 | `divide(a, b)` | 除法 |
-| `get_weather(city)` | 天气查询 |
 | `reverse_text(text)` | 反转文字 |
 | `count_words(text)` | 统计字数 |
 
-## 🚀 快速开始
+### 💎 pikachu-pro | Pro版
 
-### 前置要求
-- Python 3.10+
-- FastMCP
+| 工具 | 功能 |
+|:---|:---|
+| `get_weather_pro(city, hourly)` | 高级天气 |
+| `get_stock_price(symbol)` | 股票行情 |
+| `get_crypto_price(coin)` | 加密货币 |
+| `get_ai_news()` | AI行业新闻 |
+| `analyze_seo(title, desc, kw)` | SEO分析 |
+| `generate_password(len, special)` | 密码生成 |
 
-### 安装依赖
+---
 
-```bash
-# 克隆仓库
-git clone https://github.com/F5G5/pikachu-mcp-servers.git
-cd pikachu-mcp-servers
+## 📊 工具统计
 
-# 安装FastMCP
-pip install fastmcp
+| 类别 | 数量 |
+|:---|---:|
+| 天气/环境 | 8 |
+| 新闻/内容 | 10 |
+| 社交媒体 | 4 |
+| 效率工具 | 6 |
+| 开发工具 | 9 |
+| 基础工具 | 6 |
+| **总计** | **43+** |
 
-# 或使用uv（推荐）
-uv pip install fastmcp --system
-```
+---
 
-### 配置到 OpenClaw
-
-在 `openclaw.json` 中添加:
-
-```json
-{
-  "mcp": {
-    "servers": {
-      "pikachu-weather": {
-        "command": "python",
-        "args": ["/path/to/weather_server.py"]
-      },
-      "pikachu-news": {
-        "command": "python",
-        "args": ["/path/to/news_server.py"]
-      },
-      "pikachu-search": {
-        "command": "python",
-        "args": ["/path/to/search_server.py"]
-      }
-    }
-  }
-}
-```
-
-### 配置到 Claude Desktop
-
-在 `~/.claude_desktop_config.json` 中添加:
-
-```json
-{
-  "mcpServers": {
-    "pikachu-weather": {
-      "command": "python",
-      "args": ["/absolute/path/to/weather_server.py"]
-    }
-  }
-}
-```
-
-## 📖 使用示例
+## 🎯 使用示例
 
 ```
-你: 查一下北京现在的天气
-AI: [调用 get_current_weather] -> 北京当前晴，25°C
+你: 查一下北京天气
+AI: 调用 get_current_weather("北京") → 返回天气信息
 
-你: 获取最新科技新闻
-AI: [调用 get_tech_news] -> Hacker News TOP 10
+你: 帮我写一条Twitter推广AI工具
+AI: 调用 generate_social_content("twitter", "AI工具", "friendly")
 
-你: 搜索"Python教程"
-AI: [调用 web_search] -> 相关结果列表
+你: 25分钟番茄钟
+AI: 调用 pomodoro_timer(25) → 启动专注计时
+
+你: JSON格式化
+AI: 调用 json_formatter(json_string) → 格式化结果
 ```
 
-## 🛠️ 开发自己的MCP Server
-
-### 基础模板
-
-```python
-from fastmcp import FastMCP
-
-mcp = FastMCP("我的Server")
-
-@mcp.tool()
-def my_tool(param: str) -> str:
-    """工具描述"""
-    # 你的逻辑
-    return result
-
-if __name__ == "__main__":
-    mcp.run()
-```
-
-### 关键注解
-
-```python
-@mcp.tool(
-    annotations={
-        "readOnlyHint": True,      # 只读操作
-        "idempotentHint": True,    # 幂等操作
-        "destructiveHint": False,   # 非破坏性
-    }
-)
-```
+---
 
 ## 📂 项目结构
 
 ```
 pikachu-mcp-servers/
-├── README.md              # 本文件
 ├── weather_server.py      # 天气服务
-├── news_server.py         # 新闻服务
+├── news_server.py         # 新闻服务  
 ├── search_server.py       # 搜索服务
+├── social_server.py       # 社交媒体
+├── productivity_server.py # 效率工具
+├── devtools_server.py     # 开发工具
 ├── my_first_server.py     # 基础工具
-└── test_*.py              # 测试脚本
+├── pro_server.py          # Pro版
+├── install.sh             # Linux/macOS安装
+├── install.ps1            # Windows安装
+├── TUTORIAL_ZH.md         # 中文教程
+├── PROMOTION.md           # 推广文案
+└── README.md              # 本文件
 ```
+
+---
 
 ## 🤝 贡献
 
 欢迎提交Issue和Pull Request！
 
-1. Fork 本仓库
-2. 创建新分支 (`git checkout -b feature/amazing`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送分支 (`git push origin feature/amazing`)
-5. 创建Pull Request
-
-## 📄 许可证
-
-MIT License - 随意使用，但请保留署名！
-
-## 🙏 支持
-
-如果对你有帮助，请:
-- ⭐ Star 这个项目
-- 🐛 提交Bug
-- 📢 分享给需要的人
+1. Fork本仓库
+2. 创建新分支
+3. 提交代码
+4. 发起PR
 
 ---
 
-**皮卡皮卡～⚡ 让AI连接真实世界！**
+## 📄 许可证
+
+MIT License - 随意使用！
+
+---
+
+## 🙏 支持
+
+- ⭐ 给仓库Star
+- 🐛 提交Bug
+- 📢 分享给朋友
+
+**GitHub**: https://github.com/F5G5/pikachu-mcp-servers
+**Pro版**: https://github.com/F5G5/pikachu-mcp-pro
+
+---
+
+*皮卡皮卡～⚡ 让AI更强大！*
