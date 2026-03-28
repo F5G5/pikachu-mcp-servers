@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皮卡丘MCP服务器 - AI工具即服务</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; padding: 60px 0; }
+        h1 { font-size: 3em; margin-bottom: 20px; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .subtitle { font-size: 1.3em; color: #aaa; margin-bottom: 30px; }
+        .badges { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; }
+        .demo-section { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; margin: 40px 0; }
+        h2 { color: #ffd700; margin-bottom: 30px; font-size: 2em; }
+        .servers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .server-card { background: rgba(255,255,255,0.08); border-radius: 15px; padding: 25px; transition: transform 0.3s; }
+        .server-card:hover { transform: translateY(-5px); }
+        .server-card h3 { color: #00d4ff; margin-bottom: 15px; font-size: 1.3em; }
+        .server-card .tools { color: #aaa; font-size: 0.9em; line-height: 1.8; }
+        .server-card .tag { display: inline-block; background: #ffd700; color: #1a1a2e; padding: 3px 10px; border-radius: 10px; font-size: 0.75em; margin-right: 5px; margin-bottom: 5px; }
+        .cta-section { text-align: center; padding: 60px 0; }
+        .btn { display: inline-block; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; margin: 10px; transition: all 0.3s; }
+        .btn-primary { background: #ffd700; color: #1a1a2e; }
+        .btn-primary:hover { background: #ffed4a; transform: scale(1.05); }
+        .btn-secondary { background: transparent; border: 2px solid #ffd700; color: #ffd700; }
+        .btn-secondary:hover { background: rgba(255,215,0,0.1); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 40px 0; }
+        .feature { text-align: center; padding: 20px; }
+        .feature-icon { font-size: 3em; margin-bottom: 15px; }
+        .pricing { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 40px 0; }
+        .price-card { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 40px; min-width: 280px; text-align: center; }
+        .price-card.featured { border: 2px solid #ffd700; transform: scale(1.05); }
+        .price { font-size: 3em; color: #ffd700; font-weight: bold; }
+        .price span { font-size: 0.3em; color: #aaa; }
+        .feature-list { list-style: none; text-align: left; margin: 20px 0; }
+        .feature-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .feature-list li:before { content: "✓ "; color: #ffd700; }
+        footer { text-align: center; padding: 40px; color: #666; }
+        .github-link { color: #ffd700; text-decoration: none; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .pricing { flex-direction: column; align-items: center; }
+            .price-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ 皮卡丘 MCP 服务器</h1>
+            <p class="subtitle">让AI连接真实世界 - 开源MCP工具集合</p>
+            <div class="badges">
+                <span class="badge">🎯 Python 3.10+</span>
+                <span class="badge">🔌 FastMCP 3.1</span>
+                <span class="badge">📦 MIT开源</span>
+                <span class="badge">🐍 25+工具</span>
+            </div>
+        </header>
+
+        <section class="demo-section">
+            <h2>🚀 免费版服务器</h2>
+            <div class="servers-grid">
+                <div class="server-card">
+                    <h3>🌤️ 天气服务</h3>
+                    <div class="tools">
+                        <span class="tag">真实API</span><span class="tag">多城市</span><span class="tag">预报</span>
+                        <p>get_current_weather()</p>
+                        <p>get_weather_forecast()</p>
+                        <p>currency_converter()</p>
+                    </div>
+                </div>
+                <div class="server-card">
+                    <h3>📰 新闻服务</h3>
+                    <div class="tools">
+                        <span class="tag">Hacker News</span><span class="tag">知乎</span><span class="tag">微博</span>
+                        <p>get_tech_news()</p>
+                        <p>get_zhihu_hot()</p>
+                        <p>search_news()</p>
+                    </div>
+                </div>
+                <div class="server-card">
+                    <h3>🔍 搜索服务</h3>
+                    <div class="tools">
+                        <span class="tag">维基百科</span><span class="tag">DuckDuckGo</span><span class="tag">单位换算</span>
+                        <p>web_search()</p>
+                        <p>wikipedia_lookup()</p>
+                        <p>quick_math()</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>💎 Pro版功能</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <h3>股票行情</h3>
+                    <p>美股实时价格、涨跌幅、成交量分析</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🪙</div>
+                    <h3>加密货币</h3>
+                    <p>BTC/ETH/SOL等主流币种实时行情</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h3>SEO分析</h3>
+                    <p>网站Title/Description优化建议</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔐</div>
+                    <h3>密码生成</h3>
+                    <p>安全密码生成与强度检测</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>💰 价格</h2>
+            <div class="pricing">
+                <div class="price-card">
+                    <h3>🐣 小皮卡</h3>
+                    <div class="price">$0</div>
+                    <ul class="feature-list">
+                        <li>天气API</li>
+                        <li>新闻查询</li>
+                        <li>网页搜索</li>
+                        <li>单位换算</li>
+                    </ul>
+                    <a href="https://github.com/F5G5/pikachu-mcp-servers" class="btn btn-secondary">免费获取</a>
+                </div>
+                <div class="price-card featured">
+                    <h3>⚡ 皮卡丘Pro</h3>
+                    <div class="price">$9.9<span>/月</span></div>
+                    <ul class="feature-list">
+                        <li>免费版全部功能</li>
+                        <li>股票实时行情</li>
+                        <li>加密货币行情</li>
+                        <li>SEO分析工具</li>
+                        <li>密码生成器</li>
+                        <li>高级天气功能</li>
+                        <li>优先技术支持</li>
+                    </ul>
+                    <a href="https://afdian.net/@pikachu_mcp" class="btn btn-primary">立即订阅</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>🎯 快速开始</h2>
+            <p style="color: #aaa; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                克隆仓库，安装FastMCP，配置到OpenClaw或Claude Desktop，立即使用！
+            </p>
+            <div style="background: #0d1117; padding: 20px; border-radius: 10px; text-align: left; max-width: 600px; margin: 0 auto 30px; font-family: monospace;">
+                <p style="color: #58a6ff;"># 克隆仓库</p>
+                <p style="color: #c9d1d9;">git clone https://github.com/F5G5/pikachu-mcp-servers.git</p>
+                <p style="color: #58a6ff;"># 安装依赖</p>
+                <p style="color: #c9d1d9;">pip install fastmcp</p>
+                <p style="color: #58a6ff;"># 配置到OpenClaw</p>
+                <p style="color: #c9d1d9;">添加到 openclaw.json 的 mcp.servers</p>
+            </div>
+            <a href="https://github.com/F5G5/pikachu-mcp-servers" class="btn btn-primary">GitHub仓库</a>
+            <a href="https://github.com/sponsors/F5G5" class="btn btn-secondary">赞助支持</a>
+        </section>
+
+        <footer>
+            <p>Made with ⚡ by <a href="https://github.com/F5G5" class="github-link">Pikachu MCP</a></p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/F5G5/pikachu-mcp-servers" class="github-link">GitHub</a> | 
+                <a href="https://afdian.net/@pikachu_mcp" class="github-link">爱发电</a> | 
+                <a href="https://github.com/sponsors/F5G5" class="github-link">GitHub Sponsors</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
